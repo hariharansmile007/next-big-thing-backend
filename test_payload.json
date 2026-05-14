@@ -1,0 +1,12 @@
+{
+  "runs": 7263,
+  "strike_rate": 131.97,
+  "batting_avg": 37.25,
+  "matches": 237,
+  "last_5_match_runs": [82, 54, 113, 40, 71],
+  "role": "Batsman",
+  "wickets": 4,
+  "bowling_avg": 50.0,
+  "economy": 8.5,
+  "injury_status": "Healthy"
+}
