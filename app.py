@@ -10,7 +10,7 @@ import joblib
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 
-app = Flask(__name__, static_folder='../frontend/dist', static_url_path='/')
+app = Flask(__name__, static_folder='dist', static_url_path='/')
 CORS(app)
 
 # Set to False (or via env var) to silence debug prints in production
