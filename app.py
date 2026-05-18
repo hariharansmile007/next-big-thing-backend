@@ -7,10 +7,10 @@ import os
 import traceback
 import numpy as np
 import joblib
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend/dist', static_url_path='/')
 CORS(app)
 
 # Set to False (or via env var) to silence debug prints in production
@@ -593,6 +593,14 @@ def predict():
 def feature_names():
     """Return the ordered list of feature names."""
     return jsonify({"features": FEATURE_NAMES})
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return app.send_static_file(path)
+    else:
+        return app.send_static_file('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
